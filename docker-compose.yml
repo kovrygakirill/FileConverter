@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  file-converter:
+    container_name: FILE_CONVERTER
+    command: python app.py
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - '${SERVICE_PORT}:8080'
+    env_file:
+      - .env
+    volumes:
+      - ./:/code/

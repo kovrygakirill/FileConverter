@@ -1,5 +1,6 @@
 from aiofiles import os
 from aiohttp.web import (
+    json_response,
     Response,
     Request,
 )
@@ -21,7 +22,7 @@ async def convert_file(request: Request):
     file, convert_type = data.get('file'), data.get('type', 'pdf')
 
     if file is None:
-        return Response(body={'error': 'Файл не передан!'})
+        return json_response({'error': 'Переданный файл не найден!'})
 
     file_content = file.file.read()
     _, file_type = file.filename.split('.')
@@ -32,7 +33,7 @@ async def convert_file(request: Request):
         to_type=convert_type
     )
     if error:
-        return Response(body={'error': f'Ошибка конвертацмм. {error}'})
+        return json_response({'error': f'Ошибка конвертацмм. {error}'})
 
     data = await get_converted_file_content(path_to_file=path)
     await os.remove(path)

@@ -26,4 +26,4 @@ if __name__ == '__main__':
 
     loop = asyncio.get_event_loop()
     app = loop.run_until_complete(get_app())
-    web.run_app(app, port=8085)
+    web.run_app(app, port=8080)
