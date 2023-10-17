@@ -4,8 +4,7 @@ import uvloop
 from aiohttp import web
 
 from routes import routes
-
-MAX_SIZE_CLIENT_DATA = 1024 ** 3  # 1 GB
+from settings import MAX_SIZE_CLIENT_DATA
 
 
 async def get_app() -> web.Application:
