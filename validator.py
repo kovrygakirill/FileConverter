@@ -3,7 +3,7 @@ from exceptions import (
     NotValidConvertFileType,
     NotValidFileType,
 )
-from settings import CONVERT_FILE_TYPES
+from settings import AVAILABLE_FORMATS
 
 
 class Validator:
@@ -25,10 +25,10 @@ class Validator:
 
     def _validate_file_type(self):
         _, file_type = self.data.get('file').filename.split('.')
-        if file_type not in CONVERT_FILE_TYPES:
+        if file_type.upper() not in AVAILABLE_FORMATS:
             raise NotValidFileType
 
     def _validate_convert_file_type(self):
         convert_type = self.data.get('type', 'pdf')
-        if convert_type not in CONVERT_FILE_TYPES:
+        if convert_type.upper() not in AVAILABLE_FORMATS:
             raise NotValidConvertFileType

@@ -6,6 +6,8 @@ __pycache__/
 
 __pypackages__/
 
+tmp/
+
 celerybeat-schedule
 celerybeat.pid
 
