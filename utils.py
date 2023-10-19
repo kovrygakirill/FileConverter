@@ -24,8 +24,8 @@ async def create_convert_file(
         _, error = await process.communicate()
 
         if error:
-            raise ConversionError(f'Ошибка конвертации! {error.decode()}')
+            raise ConversionError(error.decode())
 
-        path = tmp_file.name.split('.')[0] + f'.{to_type}'
+        path = f'{tmp_file.name.split(".")[0]}.{to_type}'
 
     return path

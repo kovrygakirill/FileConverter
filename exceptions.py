@@ -9,15 +9,19 @@ class BaseServiceException(Exception):
         return self.message
 
 
-class FileNotTransferred(BaseServiceException):
-    message = 'Переданный файл не найден!.'
+class NotValidRequestData(BaseServiceException):
+    pass
 
 
-class NotValidConvertFileType(BaseServiceException):
+class FileNotTransferred(NotValidRequestData):
+    message = 'Переданный файл не найден!'
+
+
+class NotValidConvertFileType(NotValidRequestData):
     message = 'Невалдный тип конвертированного файла!'
 
 
-class NotValidFileType(BaseServiceException):
+class NotValidFileType(NotValidRequestData):
     message = 'Невалдный тип файла!'
 
 

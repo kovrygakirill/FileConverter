@@ -29,6 +29,6 @@ class Validator:
             raise NotValidFileType
 
     def _validate_convert_file_type(self):
-        convert_type = self.data.get('type', 'pdf')
+        convert_type = self.data.get('to_type', 'pdf')
         if convert_type.upper() not in AVAILABLE_FORMATS:
             raise NotValidConvertFileType
